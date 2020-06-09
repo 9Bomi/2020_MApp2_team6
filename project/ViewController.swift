@@ -98,7 +98,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
                     }
                     return false
                 }) ?? [""]
-            if topClassifications?.confidence ?? 0 < 0.7 {
+            if topClassifications?.confidence ?? 0 <= 0.71 {
                 for i in ss{
                     if let sim = self.dicsim[String(i)] {
                         self.classificationLabel.text = String(format: "  (%.2f) %@", topClassifications?.confidence ?? 0, sim)

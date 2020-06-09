@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F766F515248A8C2A00C3FB73 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766F513248A8C2A00C3FB73 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
-		F766F516248A8C2A00C3FB73 /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F766F514248A8C2A00C3FB73 /* ImageClassificationViewController.swift */; };
 		F766F518248A8C5300C3FB73 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F766F517248A8C5300C3FB73 /* MobileNet.mlmodel */; };
 		F7692CEA248651B70006992B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7692CE9248651B70006992B /* AppDelegate.swift */; };
 		F7692CEC248651B70006992B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7692CEB248651B70006992B /* SceneDelegate.swift */; };
@@ -20,7 +19,6 @@
 
 /* Begin PBXFileReference section */
 		F766F513248A8C2A00C3FB73 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
-		F766F514248A8C2A00C3FB73 /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
 		F766F517248A8C5300C3FB73 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 		F7692CE6248651B70006992B /* project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7692CE9248651B70006992B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +64,6 @@
 				F7692CEB248651B70006992B /* SceneDelegate.swift */,
 				F766F517248A8C5300C3FB73 /* MobileNet.mlmodel */,
 				F766F513248A8C2A00C3FB73 /* CGImagePropertyOrientation+UIImageOrientation.swift */,
-				F766F514248A8C2A00C3FB73 /* ImageClassificationViewController.swift */,
 				F7692CED248651B70006992B /* ViewController.swift */,
 				F7692CEF248651B70006992B /* Main.storyboard */,
 				F7692CF2248651B90006992B /* Assets.xcassets */,
@@ -152,7 +149,6 @@
 				F766F518248A8C5300C3FB73 /* MobileNet.mlmodel in Sources */,
 				F7692CEA248651B70006992B /* AppDelegate.swift in Sources */,
 				F7692CEC248651B70006992B /* SceneDelegate.swift in Sources */,
-				F766F516248A8C2A00C3FB73 /* ImageClassificationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
