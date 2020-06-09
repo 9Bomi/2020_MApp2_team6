@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Tc-tO-Cx4">
+                                <rect key="frame" x="74" y="818" width="30" height="30"/>
+                                <state key="normal" title="촬영"/>
+                                <connections>
+                                    <action selector="takePicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Afv-M9-OeK"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XKd-wN-go1">
+                                <rect key="frame" x="20" y="44" width="374" height="766"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="766" id="azb-iF-ams"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvQ-It-x3T">
+                                <rect key="frame" x="316" y="818" width="39" height="30"/>
+                                <state key="normal" title="갤러리"/>
+                                <connections>
+                                    <action selector="loadImageButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w4y-Ul-8Qk"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXU-sn-M11">
+                                <rect key="frame" x="20" y="69" width="374" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bXU-sn-M11" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="74d-v7-T0k"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WvQ-It-x3T" secondAttribute="trailing" constant="59" id="Fyj-Fl-wAG"/>
+                            <constraint firstItem="bXU-sn-M11" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="HG1-cS-Pun"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XKd-wN-go1" secondAttribute="bottom" constant="52" id="T5J-xi-r4Q"/>
+                            <constraint firstItem="WvQ-It-x3T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1Tc-tO-Cx4" secondAttribute="trailing" constant="8" symbolic="YES" id="XR5-td-1ym"/>
+                            <constraint firstItem="XKd-wN-go1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Xdi-Ms-A40"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WvQ-It-x3T" secondAttribute="bottom" constant="14" id="fbW-11-DoK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XKd-wN-go1" secondAttribute="trailing" constant="20" id="noI-ct-Qru"/>
+                            <constraint firstItem="1Tc-tO-Cx4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="74" id="qEV-tn-LB9"/>
+                            <constraint firstItem="bXU-sn-M11" firstAttribute="centerX" secondItem="XKd-wN-go1" secondAttribute="centerX" id="sgj-OP-lmF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1Tc-tO-Cx4" secondAttribute="bottom" constant="14" id="t0s-Sh-9dp"/>
+                            <constraint firstItem="XKd-wN-go1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="vZl-iy-RJK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="classificationLabel" destination="bXU-sn-M11" id="qyY-Ya-zxh"/>
+                        <outlet property="imageView" destination="XKd-wN-go1" id="8kr-FX-pN7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
+        </scene>
+    </scenes>
+</document>
