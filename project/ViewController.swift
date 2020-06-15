@@ -16,6 +16,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
 
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var classificationLabel: UILabel!
+    var outputname:String = "";
     
     var dic:[String:String] = [
         "ox":"소"
@@ -23,6 +24,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         ,"cheetah":"치타"
         ,"zebra":"얼룩말"
         ,"elephant":"코끼리"
+        ,"hyena":"하이에나"
+        ,"hartebeest":"영양"
     ]
     var dicsim:[String:String] = [
         "ox":"소"
@@ -30,6 +33,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         ,"cheetah":"기린"
         ,"zebra":"얼룩말"
         ,"elephant":"코끼리"
+        ,"hartebeest":"기린"
     ]
     
     // MARK: - Image Classification
@@ -75,6 +79,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
            }
        }
    }
+    
+    func showvideo(_ v: String){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AnimalViewController") as! AnimalViewController
+        vc.animalname = v;
+        present(vc,animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "AnimalViewController"{
+            let vc = segue.destination as! AnimalViewController
+            print("```````````output name : \(outputname)")
+            let s = (sender as! ViewController).outputname
+            vc.animalname = s;
+            print("```````````vc name : \(s)")
+        }
+    }
    
    /// Updates the UI with the results of the classification.
    /// - Tag: ProcessClassifications
@@ -102,7 +122,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
                 for i in ss{
                     if let sim = self.dicsim[String(i)] {
                         self.classificationLabel.text = String(format: "  (%.2f) %@", topClassifications?.confidence ?? 0, sim)
-
+                        self.outputname = sim;
+                        self.performSegue(withIdentifier: "AnimalViewController", sender: self as ViewController)
                         return
                     }
                 }
@@ -110,12 +131,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
                 for i in ss{
                     if let sim = self.dic[String(i)] {
                         self.classificationLabel.text = String(format: "  (%.2f) %@", topClassifications?.confidence ?? 0.5, sim)
+                        self.outputname = sim;
+                        self.performSegue(withIdentifier: "AnimalViewController", sender: self as ViewController)
                         return
                     }
                 }
             }
-            self.classificationLabel.text = "Nothing recognized."
-
+            self.classificationLabel.text = topClassifications?.identifier;
+            
            }
        }
    }
