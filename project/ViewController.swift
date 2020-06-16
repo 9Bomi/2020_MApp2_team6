@@ -14,6 +14,7 @@ import ImageIO
 class ViewController: UIViewController, UIImagePickerControllerDelegate,
     UINavigationControllerDelegate {
 
+    @IBOutlet weak var finger: UIImageView!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var classificationLabel: UILabel!
     var outputname:String = "";
@@ -60,7 +61,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
    
    /// - Tag: PerformRequests
    func updateClassifications(for image: UIImage) {
-       classificationLabel.text = "Classifying..."
+       //classificationLabel.text = "Classifying..."
        
        let orientation = CGImagePropertyOrientation(image.imageOrientation)
        guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
@@ -101,14 +102,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
    func processClassifications(for request: VNRequest, error: Error?) {
        DispatchQueue.main.async {
            guard let results = request.results else {
-               self.classificationLabel.text = "Unable to classify image.\n\(error!.localizedDescription)"
+               //self.classificationLabel.text = "Unable to classify image.\n\(error!.localizedDescription)"
                return
            }
            // The `results` will always be `VNClassificationObservation`s, as specified by the Core ML model in this project.
            let classifications = results as! [VNClassificationObservation]
        
            if classifications.isEmpty {
-               self.classificationLabel.text = "Nothing recognized."
+               //self.classificationLabel.text = "Nothing recognized."
            } else {
                    // Display top classifications ranked by confidence in the UI.
                 let topClassifications = classifications.first
@@ -121,7 +122,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
             if topClassifications?.confidence ?? 0 <= 0.71 {
                 for i in ss{
                     if let sim = self.dicsim[String(i)] {
-                        self.classificationLabel.text = String(format: "  (%.2f) %@", topClassifications?.confidence ?? 0, sim)
+                        //self.classificationLabel.text = String(format: "  (%.2f) %@", topClassifications?.confidence ?? 0, sim)
                         self.outputname = sim;
                         self.performSegue(withIdentifier: "AnimalViewController", sender: self as ViewController)
                         return
@@ -130,14 +131,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
             }else{
                 for i in ss{
                     if let sim = self.dic[String(i)] {
-                        self.classificationLabel.text = String(format: "  (%.2f) %@", topClassifications?.confidence ?? 0.5, sim)
+                        //self.classificationLabel.text = String(format: "  (%.2f) %@", topClassifications?.confidence ?? 0.5, sim)
                         self.outputname = sim;
                         self.performSegue(withIdentifier: "AnimalViewController", sender: self as ViewController)
                         return
                     }
                 }
             }
-            self.classificationLabel.text = topClassifications?.identifier;
+            //self.classificationLabel.text = topClassifications?.identifier;
             
            }
        }
@@ -161,7 +162,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
 
         present(pickerController, animated: true, completion: nil)
     }
-
+    //animation of finger
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.view.bringSubviewToFront(self.finger)
+        UIImageView.animate(withDuration: 1, delay: 0, options: [.repeat,.autoreverse], animations:{
+            self.finger.center.y += 20
+        })
+    }
     override func viewDidLoad() {
        super.viewDidLoad()
         if !UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -181,8 +190,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             picker.dismiss(animated: true, completion: nil)
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = pickedImage
+            //imageView.contentMode = .scaleAspectFit
+            //imageView.image = pickedImage
             updateClassifications(for: pickedImage)
         }
 
