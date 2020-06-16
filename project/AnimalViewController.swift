@@ -11,22 +11,13 @@ import UIKit
 class AnimalViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
-<<<<<<< HEAD
-=======
     @IBOutlet var mainimage: UIImageView!
     
->>>>>>> b96dfb570347fc44fea153d08c2c061bac2e334a
     //let nameList = ["elephant1", "elephant2", "elephant3"]
     //let bountyList = ["코끼리송! 다 같이 불러봐요!", "코끼리는 얼마나 클까요?", "코끼리에게도 배꼽이 있을까요?"]
     var animalname:String = "";
     let infodic:[String:[String]] =
         ["코끼리": ["elephant1","코끼리송! 다 같이 불러봐요!","elephant2","코끼리는 얼마나 클까요?","elephant3","코끼리에게도 배꼽이 있을까요?"],
-<<<<<<< HEAD
-         "얼룩말": ["zebra1","마티와 함께 춤을 춰봐요!","zebra2","얼룩말송! 다 같이 불러봐요","zebra3","함께 조나단을 예쁘게 꾸며봐요!"]
-    
-    ]
-//   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-=======
          "얼룩말": ["zebra1","마티와 함께 춤을 춰봐요!","zebra2","얼룩말송! 다 같이 불러봐요","zebra3","함께 조나단을 예쁘게 꾸며봐요!"],
          "치타": ["cheetah1", "치타송! 다 같이 불러봐요", "cheetah2", "귀여운 아기치타와 같이 놀까요?", "cheetah3","치타와 함께 춤을 춰봐요"],
          "소" : ["ox1", "송아지 율동! 같이 춰요~", "ox2", "꾸러기 동요 송아지 송~", "ox3", "송아지의 겨울 나들이!"],
@@ -35,7 +26,6 @@ class AnimalViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     //   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
->>>>>>> b96dfb570347fc44fea153d08c2c061bac2e334a
 //       // DetailViewController 데이터 줄꺼에요
 //       if segue.identifier == "showDetail" {
 //           let vc = segue.destination as? DetailViewController
@@ -50,10 +40,6 @@ class AnimalViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         print("DFGSDFGGGG : \(animalname)")
-<<<<<<< HEAD
-    }
-    
-=======
         
         let image = UIImage(named: "\(animalname).jpg")
         mainimage.image = image
@@ -64,7 +50,6 @@ class AnimalViewController: UIViewController, UITableViewDataSource, UITableView
    
     
     
->>>>>>> b96dfb570347fc44fea153d08c2c061bac2e334a
     // UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return infodic[animalname]!.count/2
@@ -83,19 +68,16 @@ class AnimalViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-<<<<<<< HEAD
-=======
     
         
->>>>>>> b96dfb570347fc44fea153d08c2c061bac2e334a
     // UITableViewDelegate
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("--> \(indexPath.row)")
+//        print("—> \(indexPath.row)")
 //        performSegue(withIdentifier: "showDetail", sender: indexPath.row)
 //    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
                tableView.deselectRow(at: indexPath, animated: true)
                switch indexPath.row {
                case 0: UIApplication.shared.open(URL(string : "https://www.youtube.com/watch?v=cEZasQNLlOk")! as URL, options: [:], completionHandler: nil)
@@ -103,16 +85,13 @@ class AnimalViewController: UIViewController, UITableViewDataSource, UITableView
                case 1: UIApplication.shared.open(URL(string : "https://www.youtube.com/watch?v=oTEfxlwOJbI")! as URL, options: [:], completionHandler: nil)
 
                case 2: UIApplication.shared.open(URL(string : "https://www.youtube.com/watch?v=8VRr4xhno0U")! as URL, options: [:], completionHandler: nil)
-<<<<<<< HEAD
-=======
                 
         
->>>>>>> b96dfb570347fc44fea153d08c2c061bac2e334a
                default:
 
                    return
-
-               }
+                }
+               
 
            }
 
@@ -126,8 +105,3 @@ class ListCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bountyLabel: UILabel!
     }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> b96dfb570347fc44fea153d08c2c061bac2e334a
