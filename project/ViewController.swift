@@ -119,6 +119,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
                     }
                     return false
                 }) ?? [""]
+            print("```````````output name : \(topClassifications?.identifier)")
             if topClassifications?.confidence ?? 0 <= 0.71 {
                 for i in ss{
                     if let sim = self.dicsim[String(i)] {
