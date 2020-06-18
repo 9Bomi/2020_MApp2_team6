@@ -43,9 +43,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
    lazy var classificationRequest: VNCoreMLRequest = {
        do {
            /*
-            Use the Swift class `MobileNet` Core ML generates from the model.
-            To use a different Core ML classifier model, add it to the project
-            and replace `MobileNet` with that model's generated Swift class.
+            코어 ML 모델을 불러와 사전준비
             */
            let model = try VNCoreMLModel(for: MobileNet().model)
            
@@ -58,10 +56,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
            fatalError("Failed to load Vision ML model: \(error)")
        }
    }()
-   
    /// - Tag: PerformRequests
    func updateClassifications(for image: UIImage) {
-       //classificationLabel.text = "Classifying..."
+       //이미지를 받아 이미지 분류를 요청하고 에러처리
        
        let orientation = CGImagePropertyOrientation(image.imageOrientation)
        guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
@@ -69,23 +66,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
        DispatchQueue.global(qos: .userInitiated).async {
            let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
            do {
-               try handler.perform([self.classificationRequest])
+               try handler.perform([self.classificationRequest]) //분류 요청 실행
            } catch {
                /*
-                This handler catches general image processing errors. The `classificationRequest`'s
-                completion handler `processClassifications(_:error:)` catches errors specific
-                to processing that request.
+                이미지 처리 오류 처리
                 */
                print("Failed to perform classification.\n\(error.localizedDescription)")
            }
        }
    }
-    
-    func showvideo(_ v: String){
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "AnimalViewController") as! AnimalViewController
-        vc.animalname = v;
-        present(vc,animated: true, completion: nil)
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "AnimalViewController"{
@@ -97,7 +86,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
    
-   /// Updates the UI with the results of the classification.
+   /// 이미지 분류 처리.
    /// - Tag: ProcessClassifications
    func processClassifications(for request: VNRequest, error: Error?) {
        DispatchQueue.main.async {
@@ -105,13 +94,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,
                //self.classificationLabel.text = "Unable to classify image.\n\(error!.localizedDescription)"
                return
            }
-           // The `results` will always be `VNClassificationObservation`s, as specified by the Core ML model in this project.
            let classifications = results as! [VNClassificationObservation]
        
            if classifications.isEmpty {
                //self.classificationLabel.text = "Nothing recognized."
            } else {
-                   // Display top classifications ranked by confidence in the UI.
+                   // 결과로 일치율에 따라 여러 결과가 나오고 제일 일치율이 높은 것만 처리
                 let topClassifications = classifications.first
                 let ss:[Substring] = topClassifications?.identifier.split(whereSeparator: { (c) -> Bool in
                     if c == " " || c == "," {
